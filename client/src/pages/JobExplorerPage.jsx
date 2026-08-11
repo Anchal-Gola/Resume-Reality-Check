@@ -16,7 +16,7 @@ function JobExplorerPage() {
 
       try {
         const response = await fetch(
-          "http://localhost:8001/api/resume",
+          "http://https://resume-reality-check-u8bl.onrender.com/api/resume",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -73,7 +73,7 @@ function JobExplorerPage() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:8001/api/resume/match-role",
+        "http://https://resume-reality-check-u8bl.onrender.com/api/resume/match-role",
         {
           method: "POST",
           headers: {

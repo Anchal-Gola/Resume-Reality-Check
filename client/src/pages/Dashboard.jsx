@@ -9,7 +9,7 @@ function Dashboard() {
 
       try {
         const response = await fetch(
-          "http://localhost:8001/api/resume",
+          "http://https://resume-reality-check-u8bl.onrender.com/api/resume",
           {
             headers: {
               Authorization: `Bearer ${token}`,

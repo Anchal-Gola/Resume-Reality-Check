@@ -22,7 +22,7 @@ function ResumeAnalysis() {
         setLoadingPrevious(true);
 
         const response = await fetch(
-          "http://localhost:8001/api/resume",
+          "http://https://resume-reality-check-u8bl.onrender.com/api/resume",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -86,7 +86,7 @@ function ResumeAnalysis() {
       formData.append("resume", file);
 
       const response = await fetch(
-        "http://localhost:8001/api/resume/upload",
+        "http://https://resume-reality-check-u8bl.onrender.com/api/resume/upload",
         {
           method: "POST",
           headers: {

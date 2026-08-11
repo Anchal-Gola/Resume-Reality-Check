@@ -13,8 +13,8 @@ function Login({ onLogin }) {
 
     try {
       const endpoint = isSignup
-        ? "http://localhost:8001/api/auth/signup"
-        : "http://localhost:8001/api/auth/login";
+        ? "http://https://resume-reality-check-u8bl.onrender.com/api/auth/signup"
+        : "http://https://resume-reality-check-u8bl.onrender.com/api/auth/login";
 
       const body = isSignup
         ? { name, email, password }
