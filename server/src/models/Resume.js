@@ -32,6 +32,18 @@ const resumeSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+
+    extractedText: {
+    type: String,
+    required: true,
+   },
+   analysis: {
+  score: Number,
+  skills: [String],
+  strengths: [String],
+  weaknesses: [String],
+  suggestions: [String],
+},
   },
   {
     timestamps: true,

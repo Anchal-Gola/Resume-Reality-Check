@@ -1,6 +1,6 @@
-import dns from "node:dns";
+import dns from "node:dns/promises";
 
-dns.setServers(["10.130.108.12"]);
+dns.setDefaultResultOrder("ipv4first");
 
 import dotenv from "dotenv";
 dotenv.config();

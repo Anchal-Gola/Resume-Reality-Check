@@ -1,122 +1,165 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  NavLink,
+  useNavigate,
+} from "react-router-dom";
+
+import Login from "./Login";
+
+import ResumeAnalysis from "./pages/ResumeAnalysis";
+import JobExplorerPage from "./pages/JobExplorerPage";
+import JobMatcherPage from "./pages/JobMatcherPage";
+import ResumeHistory from "./pages/ResumeHistory";
+import Dashboard from "./pages/Dashboard";
+
+import "./App.css";
+
+function AppContent() {
+  const navigate = useNavigate();
+
+  const [loggedIn, setLoggedIn] = useState(
+    !!localStorage.getItem("token")
+  );
+
+  const handleLogin = () => {
+    setLoggedIn(true);
+    navigate("/dashboard");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    navigate("/");
+  };
+
+  if (!loggedIn) {
+    return <Login onLogin={handleLogin} />;
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div>
+
+      {/* Navigation */}
+      <nav className="main-nav">
+
+        <div className="nav-brand">
+          <h2>Resume Reality Check</h2>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
+
+        <div className="nav-links">
+
+          <NavLink
+            to="/analysis"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            📄 Resume Analysis
+          </NavLink>
+
+          <NavLink
+            to="/job-explorer"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            🎯 Job Explorer
+          </NavLink>
+
+          <NavLink
+            to="/job-matcher"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            🔍 Job Matcher
+          </NavLink>
+
+          <NavLink
+            to="/history"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            🕘 Resume History
+          </NavLink>
+
         </div>
+
         <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          className="logout-btn"
+          onClick={handleLogout}
         >
-          Count is {count}
+          Logout
         </button>
-      </section>
 
-      <div className="ticks"></div>
+      </nav>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {/* Pages */}
+      <main className="page-container">
+
+        <Routes>
+
+          <Route
+            path="/dashboard"
+            element={<Dashboard />}
+          />
+
+          <Route
+            path="/analysis"
+            element={<ResumeAnalysis />}
+          />
+
+          <Route
+            path="/job-explorer"
+            element={<JobExplorerPage />}
+          />
+
+          <Route
+            path="/job-matcher"
+            element={<JobMatcherPage />}
+          />
+
+          <Route
+            path="/history"
+            element={<ResumeHistory />}
+          />
+
+          <Route
+            path="/"
+            element={
+              <Navigate to="/dashboard" replace />
+            }
+          />
+
+          <Route
+            path="*"
+            element={
+              <Navigate to="/dashboard" replace />
+            }
+          />
+
+        </Routes>
+
+      </main>
+
+    </div>
+  );
 }
 
-export default App
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}
+
+export default App;
