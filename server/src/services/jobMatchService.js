@@ -522,13 +522,27 @@ export const matchResumeWithJob = (
     );
   }
 
-  const matchScore = Math.round(
-    weightedScores.reduce(
-      (sum, score) => sum + score,
-      0
-    )
-  );
+  const totalWeight =
+  0.40 +
+  (experienceMatch !== null ? 0.20 : 0) +
+  (responsibilityScore !== null ? 0.20 : 0) +
+  (educationMatch !== null ? 0.10 : 0) +
+  (softSkillScore !== null ? 0.10 : 0);
 
+const isRoleOnly = Object.keys(roleSkills).some(
+  (role) => role === job
+);
+
+const matchScore = isRoleOnly
+  ? skillScore
+  : totalWeight > 0
+    ? Math.round(
+        weightedScores.reduce(
+          (sum, score) => sum + score,
+          0
+        ) / totalWeight
+      )
+    : 0;
   /*
    * -----------------------------------------
    * RESULT

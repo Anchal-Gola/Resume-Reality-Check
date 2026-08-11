@@ -159,7 +159,7 @@ function ResumeHistory() {
 
                 <div className="history-actions">
                   <a
-                    href="/analysis"
+                    href={`/analysis?id=${resume._id}`}
                     className="history-view-btn"
                   >
                     View Analysis →
