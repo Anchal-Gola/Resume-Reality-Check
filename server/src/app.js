@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-
 import authRoutes from "./routes/authRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
 

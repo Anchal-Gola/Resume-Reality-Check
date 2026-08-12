@@ -12,10 +12,9 @@ function Login({ onLogin }) {
     e.preventDefault();
 
     try {
-      const endpoint = isSignup
-        ? "https://resume-reality-check-u8bl.onrender.com/api/auth/signup"
-        : "https://resume-reality-check-u8bl.onrender.com/api/auth/login";
-
+  const endpoint = isSignup
+    ? "https://resume-reality-check-u8bl.onrender.com/api/auth/signup"
+    : "https://resume-reality-check-u8bl.onrender.com/api/auth/login";
       const body = isSignup
         ? { name, email, password }
         : { email, password };
