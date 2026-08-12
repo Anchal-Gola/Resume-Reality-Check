@@ -9,13 +9,14 @@ function Dashboard() {
 
       try {
         const response = await fetch(
-          "http://https://resume-reality-check-u8bl.onrender.com/api/resume",
+          "https://resume-reality-check-u8bl.onrender.com/api/resume",
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
+
 
         const data = await response.json();
 
