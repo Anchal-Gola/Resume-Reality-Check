@@ -13,8 +13,8 @@ function Login({ onLogin }) {
 
     try {
       const endpoint = isSignup
-        ? "http://https://resume-reality-check-u8bl.onrender.com/api/auth/signup"
-        : "http://https://resume-reality-check-u8bl.onrender.com/api/auth/login";
+        ? "https://resume-reality-check-u8bl.onrender.com/api/auth/signup"
+        : "https://resume-reality-check-u8bl.onrender.com/api/auth/login";
 
       const body = isSignup
         ? { name, email, password }
@@ -60,9 +60,9 @@ function Login({ onLogin }) {
     <div className="auth-page">
       <div className="auth-card">
 
-       <div className="auth-logo">
-  ✦
-</div>
+        <div className="auth-logo">
+          ✦
+        </div>
 
         <h1>Resume Reality Check</h1>
 
@@ -79,9 +79,7 @@ function Login({ onLogin }) {
               type="text"
               placeholder="Full Name"
               value={name}
-              onChange={(e) =>
-                setName(e.target.value)
-              }
+              onChange={(e) => setName(e.target.value)}
               required
             />
           )}
@@ -90,9 +88,7 @@ function Login({ onLogin }) {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
@@ -100,9 +96,7 @@ function Login({ onLogin }) {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
@@ -119,9 +113,7 @@ function Login({ onLogin }) {
 
           <button
             type="button"
-            onClick={() =>
-              setIsSignup(!isSignup)
-            }
+            onClick={() => setIsSignup(!isSignup)}
           >
             {isSignup ? "Login" : "Sign Up"}
           </button>

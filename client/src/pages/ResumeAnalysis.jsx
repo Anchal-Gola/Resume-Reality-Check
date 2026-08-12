@@ -86,8 +86,9 @@ function ResumeAnalysis() {
       formData.append("resume", file);
 
       const response = await fetch(
-        "http://https://resume-reality-check-u8bl.onrender.com/api/resume/upload",
-        {
+  "https://resume-reality-check-u8bl.onrender.com/api/resume/upload",
+
+  {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,

@@ -73,7 +73,7 @@ function JobExplorerPage() {
       setLoading(true);
 
       const response = await fetch(
-        "http://https://resume-reality-check-u8bl.onrender.com/api/resume/match-role",
+       "https://resume-reality-check-u8bl.onrender.com/api/resume/match-role",
         {
           method: "POST",
           headers: {

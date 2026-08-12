@@ -44,8 +44,9 @@ function ResumeHistory() {
 
     try {
       const response = await fetch(
-        `http://https://resume-reality-check-u8bl.onrender.com/api/resume/${resumeId}`,
-        {
+  `https://resume-reality-check-u8bl.onrender.com/api/resume/${resumeId}`,
+
+  {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,

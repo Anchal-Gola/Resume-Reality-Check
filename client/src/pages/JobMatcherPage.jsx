@@ -63,8 +63,9 @@ function JobMatcherPage() {
       setResult(null);
 
       const response = await fetch(
-        "http://https://resume-reality-check-u8bl.onrender.com/api/resume/match-job",
-        {
+  "https://resume-reality-check-u8bl.onrender.com/api/resume/match-job",
+
+  {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
