@@ -13,7 +13,7 @@ function JobMatcherPage() {
 
       try {
         const response = await fetch(
-        https://resume-reality-check-u8bl.onrender.com,
+        "https://resume-reality-check-u8bl.onrender.com/api/resume",
           {
             headers: {
               Authorization: `Bearer ${token}`,

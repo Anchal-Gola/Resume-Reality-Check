@@ -22,7 +22,7 @@ function ResumeAnalysis() {
         setLoadingPrevious(true);
 
         const response = await fetch(
-        https://resume-reality-check-u8bl.onrender.com,
+"https://resume-reality-check-u8bl.onrender.com/api/resume/upload",
           {
             headers: {
               Authorization: `Bearer ${token}`,
