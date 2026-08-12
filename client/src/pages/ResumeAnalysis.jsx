@@ -22,7 +22,7 @@ function ResumeAnalysis() {
         setLoadingPrevious(true);
 
         const response = await fetch(
-"https://resume-reality-check-u8bl.onrender.com/api/resume/upload",
+          "https://resume-reality-check-u8bl.onrender.com/api/resume",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +55,6 @@ function ResumeAnalysis() {
 
         // Show the previously saved analysis
         setResult(selectedResume.analysis);
-
       } catch (error) {
         console.error(
           "Failed to load previous analysis:",
@@ -86,9 +85,8 @@ function ResumeAnalysis() {
       formData.append("resume", file);
 
       const response = await fetch(
-  "https://resume-reality-check-u8bl.onrender.com/api/resume/upload",
-
-  {
+        "https://resume-reality-check-u8bl.onrender.com/api/resume/upload",
+        {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -106,7 +104,6 @@ function ResumeAnalysis() {
       }
 
       setResult(data.analysis);
-
     } catch (error) {
       alert(error.message);
     } finally {
