@@ -8,11 +8,36 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "https://resume-reality-check-dusky.vercel.app",
-  "https://resume-reality-check-gk88f8ryl-anshikagola45-3597s-projects.vercel.app",
 ];
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      // Allow requests without an origin
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      // Allow localhost
+      if (origin === "http://localhost:5173") {
+        return callback(null, true);
+      }
+
+      // Allow your Vercel Resume Reality Check deployments
+      if (
+        origin.endsWith(".vercel.app") &&
+        origin.includes("resume-reality-check")
+      ) {
+        return callback(null, true);
+      }
+
+      // Allow known production URL
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
