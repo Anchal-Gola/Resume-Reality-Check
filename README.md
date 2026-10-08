@@ -91,4 +91,3 @@ npm run dev
   LinkedIn: [Anchal Gola](https://www.linkedin.com/in/anchal-gola)
   Email: [anchalspg2005@gmail.com](mailto:anchalspg2005@gmail.com)
 
-*(Note: Card popup close karne ke liye uske top-right par jo `X` icon hai us par click karke use band kar sakti ho!)*
